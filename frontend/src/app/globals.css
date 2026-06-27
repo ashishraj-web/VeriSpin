@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0c0a09;
+    --card-bg: rgba(28, 25, 23, 0.55);
+    --card-border: rgba(255, 255, 255, 0.07);
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: #f5f3f0;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(245, 158, 11, 0.3);
+    color: #fff;
+  }
+
+  /* Custom scrollbar for the entrants list */
+  .scroll-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11, 0.35);
+  }
+}
+
+/* ---------- Cards ---------- */
+.verispin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.verispin-card:hover {
+  border-color: rgba(244, 63, 94, 0.22);
+  box-shadow: 0 12px 44px rgba(245, 158, 11, 0.07);
+}
+
+/* ---------- Buttons ---------- */
+.btn-neon-primary {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #1c1917;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-neon-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(245, 158, 11, 0.5);
+}
+
+.btn-neon-secondary {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-neon-secondary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(244, 63, 94, 0.45);
+}
+
+/* ---------- Animated gradient text ---------- */
+.gradient-text {
+  background: linear-gradient(90deg, #fbbf24, #fb7185, #fbbf24);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ---------- Spinner (resolving wheel) ---------- */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.spinner-slow {
+  animation: spin-slow 12s linear infinite;
+}
+.spin-fast {
+  animation: spin-slow 2.5s linear infinite;
+}
+
+/* ---------- Ambient background blobs ---------- */
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.08); }
+}
+.blob {
+  animation: float-blob 14s ease-in-out infinite;
+}
+
+/* ---------- Toast entrance ---------- */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.toast-in {
+  animation: toast-in 0.3s ease-out;
+}
+
+/* ---------- Subtle pulse for live dot ---------- */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.soft-pulse {
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
